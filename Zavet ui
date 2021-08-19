@@ -5,7 +5,7 @@ function FuzkiLib.functions:DestroyGUI()
 end
 
 function FuzkiLib:Create(name, gameName)
-    name = name or "Zavet"
+    name = name or "name"
     local InsideFuzki = {}
 
     local Fuzki = Instance.new("ScreenGui")
@@ -21,7 +21,7 @@ function FuzkiLib:Create(name, gameName)
     local elementsCorner = Instance.new("UICorner")
     local elementFolder = Instance.new("Folder")
 
-    Fuzki.Name = "name"
+    Fuzki.Name = "Zavet"
     Fuzki.Parent = game.CoreGui
     Fuzki.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
