@@ -327,7 +327,7 @@ function FuzkiLib:Create(name, gameName)
                     BackgroundColor3 = Color3.fromRGB(40, 40, 40)
                 }
                 local on = {
-                    BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+                    BackgroundColor3 = Color3.fromRGB(255,106,106)
                 }
 
                 local playon = ts:Create(toggleBtn,tsInfo, on)
