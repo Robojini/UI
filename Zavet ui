@@ -5,12 +5,6 @@ function FuzkiLib:Create(name, gameName)
     gameName = gameName or "Game Name"
     local InsideFuzki = {}
 
-function FuzkiLib.functions:DestroyGUI()
-    if game.CoreGui:FindFirstChild("FuzkiLib") then 
-        game.CoreGui.FuzkiLib:Destroy() 
-    end
-end
-
     local Fuzki = Instance.new("ScreenGui")
     local MainLib = Instance.new("Frame")
     local headerLine = Instance.new("Frame")
