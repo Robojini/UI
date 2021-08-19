@@ -4,9 +4,8 @@ function FuzkiLib.functions:DestroyGUI()
     if game.CoreGui:FindFirstChild("Zavet") then game.CoreGui.Zavet:Destroy() end
 end
 
-function FuzkiLib:Create(name, gameName)
+function FuzkiLib:Create(name)
     name = name or "Zavet"
-    gameName = gameName or "Game Name"
     local InsideFuzki = {}
 
     local Fuzki = Instance.new("ScreenGui")
@@ -107,7 +106,7 @@ function FuzkiLib:Create(name, gameName)
     title.Position = UDim2.new(0.0362473354, 0, 0, 0)
     title.Size = UDim2.new(0, 200, 0, 44)
     title.Font = Enum.Font.GothamSemibold
-    title.Text = name.." : "..gameName
+    title.Text = name
     title.TextColor3 = Color3.fromRGB(212, 212, 212)
     title.TextSize = 18.000
     title.TextXAlignment = Enum.TextXAlignment.Left
