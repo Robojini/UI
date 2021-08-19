@@ -1,9 +1,5 @@
 local FuzkiLib = {}
 
-function FuzkiLib.functions:DestroyGUI()
-    if game.CoreGui:FindFirstChild("name") then game.CoreGui.name:Destroy() end
-end
-
 function FuzkiLib:Create(name, gameName)
     name = name or "Name"
     gameName = gameName or "Game Name"
@@ -331,7 +327,7 @@ function FuzkiLib:Create(name, gameName)
                     BackgroundColor3 = Color3.fromRGB(40, 40, 40)
                 }
                 local on = {
-                    BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+                    BackgroundColor3 = Color3.fromRGB(255,48,48)
                 }
 
                 local playon = ts:Create(toggleBtn,tsInfo, on)
