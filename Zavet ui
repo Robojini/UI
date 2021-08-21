@@ -1,4 +1,4 @@
-local FuzkiLib = {}
+=local FuzkiLib = {}
 
 function FuzkiLib:Create(name, gameName)
     name = name or "Name"
@@ -67,8 +67,6 @@ function FuzkiLib:Create(name, gameName)
     lineTab.Position = UDim2.new(0, 0, 0.972222209, 0)
     lineTab.Size = UDim2.new(0, 435, 0, 1)
 
-    local UserInputService = game:GetService("UserInputService")
-
     local TopBar = MainLib
 
     local Camera = workspace:WaitForChild("Camera")
@@ -77,7 +75,7 @@ function FuzkiLib:Create(name, gameName)
     local FramePosition
     local Draggable = false
     
-    local UIS = game:GetService('UserInputService')
+    local UserInputService = game:GetService('UserInputService')
 
 local frame = script.Parent
 
@@ -133,7 +131,7 @@ end)
 
 
 
-UIS.InputChanged:Connect(function(input)
+UserInputService.InputChanged:Connect(function(input)
 
     if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 
