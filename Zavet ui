@@ -1,4 +1,4 @@
-=local FuzkiLib = {}
+local FuzkiLib = {}
 
 function FuzkiLib:Create(name, gameName)
     name = name or "Name"
@@ -67,6 +67,8 @@ function FuzkiLib:Create(name, gameName)
     lineTab.Position = UDim2.new(0, 0, 0.972222209, 0)
     lineTab.Size = UDim2.new(0, 435, 0, 1)
 
+    local UserInputService = game:GetService("UserInputService")
+
     local TopBar = MainLib
 
     local Camera = workspace:WaitForChild("Camera")
@@ -74,76 +76,25 @@ function FuzkiLib:Create(name, gameName)
     local DragMousePosition
     local FramePosition
     local Draggable = false
-    
-    local UserInputService = game:GetService('UserInputService')
-
-local frame = script.Parent
-
-
-
-local dragToggle = nil
-
-local dragSpeed = 0.25
-
-local dragStart = nil
-
-local startPos = nil
-
-
-
-local function updateInput(input)
-
-    local delta = input.Position - dragStart
-
-    local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
-
-        startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-
-    game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
-
-end
-
-
-
-frame.InputBegan:Connect(function(input)
-
-    if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
-
-        dragToggle = true
-
-        dragStart = input.Position
-
-        startPos = frame.Position
-
-        input.Changed:Connect(function()
-
-            if input.UserInputState == Enum.UserInputState.End then
-
-                dragToggle = false
-
-            end
-
-        end)
-
-    end
-
-end)
-
-
-
-UserInputService.InputChanged:Connect(function(input)
-
-    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-
-        if dragToggle then
-
-            updateInput(input)
-
+    TopBar.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            Draggable = true
+            DragMousePosition = Vector2.new(input.Position.X, input.Position.Y)
+            FramePosition = Vector2.new(MainLib.Position.X.Scale, MainLib.Position.Y.Scale)
         end
+    end)
+    UserInputService.InputChanged:Connect(function(input)
+        if Draggable == true then
+            local NewPosition = FramePosition + ((Vector2.new(input.Position.X, input.Position.Y) - DragMousePosition) / Camera.ViewportSize)
+            MainLib.Position = UDim2.new(NewPosition.X, NewPosition.Y,)
+        end
+    end)
 
-    end
-
-end)
+    UserInputService.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            Draggable = false
+        end
+    end)
 
     title.Name = "title"
     title.Parent = MainLib
