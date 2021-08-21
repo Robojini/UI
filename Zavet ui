@@ -76,8 +76,9 @@ function FuzkiLib:Create(name, gameName)
     local DragMousePosition
     local FramePosition
     local Draggable = false
-    local function ZCSLDIP_fake_script() -- ZavetUI.MoveUI 
-    local script = Instance.new('LocalScript', ZavetUI)
+
+    local function HWMW_fake_script() -- MainLib.MoveUI 
+    local script = Instance.new('LocalScript', MainLib)
 
     local UIS = game:GetService('UserInputService')
     
@@ -149,7 +150,8 @@ function FuzkiLib:Create(name, gameName)
     
     end)
 end
-coroutine.wrap(ZCSLDIP_fake_script)()
+coroutine.wrap(HWMW_fake_script)()
+
 
 
     title.Name = "title"
