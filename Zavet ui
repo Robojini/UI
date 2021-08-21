@@ -1,8 +1,7 @@
 local FuzkiLib = {}
 
-function FuzkiLib:Create(name, gameName)
+function FuzkiLib:Create(name)
     name = name or "Name"
-    gameName = gameName or "Game Name"
     local InsideFuzki = {}
 
     local Fuzki = Instance.new("ScreenGui")
@@ -30,7 +29,7 @@ function FuzkiLib:Create(name, gameName)
 
     headerLine.Name = "headerLine"
     headerLine.Parent = MainLib
-    headerLine.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    headerLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     headerLine.BorderSizePixel = 0
     headerLine.Position = UDim2.new(0, 0, 0.0909090936, 0)
     headerLine.Size = UDim2.new(0, 469, 0, 1)
@@ -160,10 +159,10 @@ coroutine.wrap(HWMW_fake_script)()
     title.BackgroundTransparency = 1.000
     title.Position = UDim2.new(0.0362473354, 0, 0, 0)
     title.Size = UDim2.new(0, 200, 0, 44)
-    title.Font = Enum.Font.GothamSemibold
-    title.Text = name.." : "..gameName
+    title.Font = Enum.Font.GrenzeGotisch
+    title.Text = "name"
     title.TextColor3 = Color3.fromRGB(212, 212, 212)
-    title.TextSize = 18.000
+    title.TextSize = 85.000
     title.TextXAlignment = Enum.TextXAlignment.Left
 
     elements.Name = "elements"
