@@ -548,8 +548,7 @@ function FuzkiLib:Create(name, gameName)
             sliderVal.Text = minvalue.."/"..maxvalue
             sliderVal.TextColor3 = Color3.fromRGB(212, 212, 212)
             sliderVal.TextSize = 16.000
-            sliderVal.TextXAlignment = Enum.TextXAlignment.Right                       
-            end)
+            sliderVal.TextXAlignment = Enum.TextXAlignment.Right
         end
     return Items
     end
