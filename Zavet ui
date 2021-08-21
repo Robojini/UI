@@ -559,15 +559,6 @@ function FuzkiLib:Create(name, gameName)
                 pcall(function()
                     callback(Value)
                 end)
-                Frame.Size = UDim2.new(0, math.clamp(mouse.X - Frame.AbsolutePosition.X, 0, 128), 0, 10)
-                moveconnection = mouse.Move:Connect(function()
-                    sliderVal.Text = Value.."/"..maxvalue
-                    Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 128) * Frame.AbsoluteSize.X) + tonumber(minvalue))
-                    pcall(function()
-                        callback(Value)
-                    end)
-                    Frame.Size = UDim2.new(0, math.clamp(mouse.X - Frame.AbsolutePosition.X, 0, 128), 0, 10)
-                end)
                 
 local UIS = game:GetService('UserInputService')
 
