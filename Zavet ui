@@ -76,25 +76,7 @@ function FuzkiLib:Create(name, gameName)
     local DragMousePosition
     local FramePosition
     local Draggable = false
-    TopBar.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            Draggable = true
-            DragMousePosition = Vector2.new(input.Position.X, input.Position.Y)
-            FramePosition = Vector2.new(MainLib.Position.X.Scale, MainLib.Position.Y.Scale)
-        end
-    end)
-    UserInputService.InputChanged:Connect(function(input)
-        if Draggable == true then
-            local NewPosition = FramePosition + ((Vector2.new(input.Position.X, input.Position.Y) - DragMousePosition) / Camera.ViewportSize)
-            MainLib.Position = UDim2.new(NewPosition.X, 0, NewPosition.Y, 0)
-        end
-    end)
-
-    UserInputService.InputEnded:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            Draggable = false
-        end
-    end)
+    
 
     title.Name = "title"
     title.Parent = MainLib
@@ -549,6 +531,37 @@ function FuzkiLib:Create(name, gameName)
             sliderVal.TextColor3 = Color3.fromRGB(212, 212, 212)
             sliderVal.TextSize = 16.000
             sliderVal.TextXAlignment = Enum.TextXAlignment.Right
+
+            local mouse = game.Players.LocalPlayer:GetMouse()
+            local uis = game:GetService("UserInputService")
+            local Value;
+
+            sliderBtn.MouseButton1Down:Connect(function()
+                Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 128) * Frame.AbsoluteSize.X) + tonumber(minvalue)) or 0
+                pcall(function()
+                    callback(Value)
+                end)
+                Frame.Size = UDim2.new(0, math.clamp(mouse.X - Frame.AbsolutePosition.X, 0, 128), 0, 10)
+                moveconnection = mouse.Move:Connect(function()
+                    sliderVal.Text = Value.."/"..maxvalue
+                    Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 128) * Frame.AbsoluteSize.X) + tonumber(minvalue))
+                    pcall(function()
+                        callback(Value)
+                    end)
+                    Frame.Size = UDim2.new(0, math.clamp(mouse.X - Frame.AbsolutePosition.X, 0, 128), 0, 10)
+                end)
+                releaseconnection = uis.InputEnded:Connect(function(Mouse)
+                    if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
+                        Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 128) * Frame.AbsoluteSize.X) + tonumber(minvalue))
+                        pcall(function()
+                            callback(Value)
+                        end)
+                        Frame.Size = UDim2.new(0, math.clamp(mouse.X - Frame.AbsolutePosition.X, 0, 128), 0, 10)
+                        moveconnection:Disconnect()
+                        releaseconnection:Disconnect()
+                    end
+                end)
+            end)
         end
     return Items
     end
