@@ -86,7 +86,7 @@ function FuzkiLib:Create(name, gameName)
     UserInputService.InputChanged:Connect(function(input)
         if Draggable == true then
             local NewPosition = FramePosition + ((Vector2.new(input.Position.X, input.Position.Y) - DragMousePosition) / Camera.ViewportSize)
-            MainLib.Position = UDim2.new(NewPosition.X, NewPosition.Y,)
+            MainLib.Position = UDim2.new(NewPosition.X, 0, NewPosition.Y, 0)
         end
     end)
 
