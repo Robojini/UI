@@ -29,7 +29,7 @@ function FuzkiLib:Create(name)
 
     headerLine.Name = "headerLine"
     headerLine.Parent = MainLib
-    headerLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    headerLine.BackgroundColor3 = Color3.fromRGB(205,201,201)
     headerLine.BorderSizePixel = 0
     headerLine.Position = UDim2.new(0, 0, 0.0909090936, 0)
     headerLine.Size = UDim2.new(0, 469, 0, 1)
@@ -384,7 +384,7 @@ coroutine.wrap(HWMW_fake_script)()
                     BackgroundColor3 = Color3.fromRGB(40, 40, 40)
                 }
                 local on = {
-                    BackgroundColor3 = Color3.fromRGB(255,48,48)
+                    BackgroundColor3 = Color3.fromRGB(205,201,201)
                 }
 
                 local playon = ts:Create(toggleBtn,tsInfo, on)
