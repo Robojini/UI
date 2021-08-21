@@ -1,5 +1,9 @@
 local FuzkiLib = {}
 
+function FuzkiLib.functions:DestroyGUI()
+    if game.CoreGui:FindFirstChild("name") then game.CoreGui.name:Destroy() end
+end
+
 function FuzkiLib:Create(name)
     name = name or "Name"
     local InsideFuzki = {}
