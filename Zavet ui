@@ -160,7 +160,7 @@ coroutine.wrap(HWMW_fake_script)()
     title.Position = UDim2.new(0.0362473354, 0, 0, 0)
     title.Size = UDim2.new(0, 200, 0, 44)
     title.Font = Enum.Font.GrenzeGotisch
-    title.Text = "name"
+    title.Text = "Zavet"
     title.TextColor3 = Color3.fromRGB(212, 212, 212)
     title.TextSize = 85.000
     title.TextXAlignment = Enum.TextXAlignment.Left
