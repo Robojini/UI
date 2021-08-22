@@ -17,7 +17,7 @@ function FuzkiLib:Create(name)
     local elementsCorner = Instance.new("UICorner")
     local elementFolder = Instance.new("Folder")
 
-    Fuzki.Name = "name"
+    Fuzki.Name = "Zavet"
     Fuzki.Parent = game.CoreGui
     Fuzki.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
@@ -29,7 +29,7 @@ function FuzkiLib:Create(name)
 
     headerLine.Name = "headerLine"
     headerLine.Parent = MainLib
-    headerLine.BackgroundColor3 = Color3.fromRGB(205,201,201)
+    headerLine.BackgroundColor3 = Color3.fromRGB(190, 190, 190)
     headerLine.BorderSizePixel = 0
     headerLine.Position = UDim2.new(0, 0, 0.0909090936, 0)
     headerLine.Size = UDim2.new(0, 469, 0, 1)
